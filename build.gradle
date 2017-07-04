@@ -6,7 +6,14 @@ plugins {
     id "com.jfrog.bintray" version "1.0"
 }
 
-group = 'com.isolutions.opensymphony'
+try {
+    apply from: 'local.gradle'
+} catch (e) {
+    // You don't have to have a local.gradle file
+}
+apply plugin: 'maven-publish'
+
+group = 'com.i-nexus.opensymphony'
 version = project.hasProperty('app_version') ? app_version : 'local'
 
 description = "bare minimum OpenSymphony Workflow based on 3.0 code base"
@@ -16,7 +23,6 @@ targetCompatibility = 1.7
 
 repositories {
     jcenter()
-    maven { url "http://dl.bintray.com/trunkplatform/osworkflow" }
 }
 dependencies {
 
@@ -55,6 +61,10 @@ artifacts {
 publishing {
     publications {
         mavenJava(MavenPublication) {
+            version version
+            artifactId rootProject.name
+            groupId group
+
             pom.withXml {
                 asNode().dependencies.'*'.findAll() {
                     it.scope.text() == 'runtime' && project.configurations.compile.allDependencies.find { dep ->
@@ -73,30 +83,17 @@ publishing {
             }
         }
     }
+    repositories {
+        maven {
+            url rootProject.ext.releaseRepo
+            credentials {
+                username rootProject.ext.releaseRepoUserName
+                password rootProject.ext.releaseRepoPassword
+            }
+        }
+    }
 }
 
 javadoc {
     failOnError = false
-}
-
-bintray {
-    user = bintrayUser
-    key = bintrayApiKey
-
-    publications = ['mavenJava']
-
-    dryRun = false //Whether to run this as dry-run, without deploying
-    publish = true //If version should be auto published after an upload
-    pkg {
-        repo = 'osworkflow'
-        userOrg = 'trunkplatform'
-        name = 'trunkplatform:osworkflow'
-        desc = 'Custom OpenSymphony workflow based on 3.0'
-        websiteUrl = 'https://github.com/Trunkplatform/osworkflow'
-        issueTrackerUrl = 'https://github.com/Trunkplatform/osworkflow/issues'
-        vcsUrl = 'https://github.com/Trunkplatform/osworkflow.git'
-        licenses = ['Apache-2.0']
-        labels = ['opensymphony', 'osworkflow']
-        publicDownloadNumbers = true
-    }
 }
