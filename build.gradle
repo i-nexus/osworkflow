@@ -38,6 +38,8 @@ dependencies {
     // spring
     compile group: 'org.springframework', name: 'spring-context', version: '4.0.9.RELEASE'
 
+    compile group: 'org.hibernate', name: 'hibernate-core', version: '4.3.11.Final'
+
     // war
     providedCompile group: 'javax.servlet', name: 'servlet-api', version: '2.5'
 }
