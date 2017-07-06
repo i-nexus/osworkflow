@@ -1,7 +1,6 @@
 plugins {
     id 'java'
     id 'maven'
-    id 'war'
     id 'maven-publish'
     id "com.jfrog.bintray" version "1.0"
 }
@@ -37,9 +36,6 @@ dependencies {
     compile group: 'org.springframework', name: 'spring-context', version: '4.0.9.RELEASE'
 
     compile group: 'org.hibernate', name: 'hibernate-core', version: '4.3.11.Final'
-
-    // war
-    providedCompile group: 'javax.servlet', name: 'servlet-api', version: '2.5'
 }
 
 // custom tasks for creating source/javadoc jars
