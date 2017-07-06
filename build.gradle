@@ -31,7 +31,6 @@ dependencies {
 
     // opensymphony
     compile group: 'opensymphony', name: 'oscore', version: '2.2.4'
-    compile group: 'opensymphony', name: 'osuser', version: '1.0-dev-10Sep06'
     compile group: 'opensymphony', name: 'propertyset', version: '1.5'
 
     // spring
