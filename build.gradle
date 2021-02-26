@@ -2,7 +2,6 @@ plugins {
     id 'java'
     id 'maven'
     id 'maven-publish'
-    id "com.jfrog.bintray" version "1.0"
 }
 
 try {
@@ -21,7 +20,9 @@ sourceCompatibility = 1.7
 targetCompatibility = 1.7
 
 repositories {
-    jcenter()
+    maven {
+        url "http://sonatype.i-nexus.local/repository/jcenter"
+    }
 }
 dependencies {
 
