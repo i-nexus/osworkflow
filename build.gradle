@@ -22,7 +22,11 @@ targetCompatibility = 1.7
 repositories {
     mavenCentral()
     maven {
-        url "http://sonatype.i-nexus.local/repository/nexus_legacy"
+        url rootProject.ext.releaseRepo
+        credentials {
+            username rootProject.ext.releaseRepoUserName
+            password rootProject.ext.releaseRepoPassword
+        }
     }
 }
 dependencies {
