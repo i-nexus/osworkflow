@@ -23,10 +23,6 @@ repositories {
     mavenCentral()
     maven {
         url rootProject.ext.releaseRepo
-        credentials {
-            username rootProject.ext.releaseRepoUserName
-            password rootProject.ext.releaseRepoPassword
-        }
     }
 }
 dependencies {
