@@ -16,8 +16,8 @@ import java.util.List;
 public class HibernateWorkflowEntry implements WorkflowEntry {
     //~ Instance fields ////////////////////////////////////////////////////////
 
-    List currentSteps = new ArrayList();
-    List historySteps = new ArrayList();
+    List<HibernateCurrentStep> currentSteps = new ArrayList<>();
+    List<HibernateHistoryStep> historySteps = new ArrayList<>();
     String workflowName;
     long id = -1;
     private int state;
@@ -25,19 +25,19 @@ public class HibernateWorkflowEntry implements WorkflowEntry {
 
     //~ Methods ////////////////////////////////////////////////////////////////
 
-    public void setCurrentSteps(List currentSteps) {
+    public void setCurrentSteps(List<HibernateCurrentStep> currentSteps) {
         this.currentSteps = currentSteps;
     }
 
-    public List getCurrentSteps() {
+    public List<HibernateCurrentStep> getCurrentSteps() {
         return currentSteps;
     }
 
-    public void setHistorySteps(List historySteps) {
+    public void setHistorySteps(List<HibernateHistoryStep> historySteps) {
         this.historySteps = historySteps;
     }
 
-    public List getHistorySteps() {
+    public List<HibernateHistoryStep> getHistorySteps() {
         return historySteps;
     }
 

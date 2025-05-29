@@ -7,7 +7,6 @@ package com.opensymphony.workflow.query;
 import java.io.Serializable;
 
 /**
- * @deprecated use {@link WorkflowExpressionQuery} instead
  * @author Hani
  */
 public class WorkflowQuery implements Serializable {
